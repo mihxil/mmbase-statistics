@@ -1,0 +1,42 @@
+== Introduction
+
+This component provides the means to easily calculate averages and other
+statistical information about a certain field in a list of objects.
+
+....
+      <someelement
+           ...
+           xmlns:mmstats="http://www.mmbase.org/mmbase-statistics">
+      Define some list:
+
+      <mm:listcontainer>
+        ... <mm:constraint ..>
+
+      <mm:listnodes id="pagestays" />
+
+      Now report some things:
+      Sum: ${mmstats:sum(pagestays, 'duration')}
+      Average: ${mmstats:average(pagestays, 'duration')}
+
+      
+      
+....
+
+Sometimes you want to do slighty more complex things, like calculating
+the average of a number of sums, or so.
+
+....
+      Instantiate a measurement object:
+
+      <c:set var="totalmean" value="${mmstats:measurement()}" />
+
+      <mm:listnodes id="pages">
+        <mm:tree id="subpages" /> <!-- or soemthing -->
+        <mmstats:enter measure="${totalmean}" value="${mmstats:sum(subpages, 'duration')}" />
+      </mm:listnodes
+
+      Average sum: ${totalmean}
+
+      
+      
+....
