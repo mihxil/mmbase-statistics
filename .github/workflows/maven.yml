@@ -31,12 +31,11 @@ jobs:
         server-password: CENTRAL_PASSWORD
         gpg-private-key: ${{ secrets.GPG_SECRET_KEY }}
     - name: Build with Maven
-      run: mvn -B -fae -P'!default' ${{ matrix.target }}
+      run: mvn -B -fae -P'!default' deploy
       env:
         CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
         CENTRAL_PASSWORD: ${{ secrets.CENTRAL_PASSWORD }}
         MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_SECRET_KEY_PASSPHRASE }}
-    - uses: codecov/codecov-action@v5
     - name: Publish Unit Test Results
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: (success() || failure())
