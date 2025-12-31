@@ -9,12 +9,6 @@
 
   <artifactId>mmbase-statistics</artifactId>
   <name>MMBase Statistics</name>
-  <version>0.4</version>
+  <version>0.5-SNAPSHOT</version>
   <packaging>war</packaging>
-
-
-
-  <scm>
-    <tag>mmbase-statistics-0.4</tag>
-  </scm>
 </project>
